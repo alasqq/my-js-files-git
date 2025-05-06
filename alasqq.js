@@ -145,9 +145,9 @@ var RateGen = (function () {
   
     const isAuto = autoBool ? "Auto" : "Manual";
     const spins = autoBool ? autoValues[index0to5] : spin1to9;
-    const check1 = even1and2 ? 'âŒ' : 'âœ…';
-    const check2 = even1and2 ? 'âœ…' : 'âŒ';
-    const check3 = isEven(three) ? 'âŒ' : 'âœ…';
+    const check1 = even1and2 ? '❌' : '✅';
+    const check2 = even1and2 ? '✅' : '❌';
+    const check3 = isEven(three) ? '❌' : '✅';
   
     return `${spins} ${check1}${check2}${check3} ${isAuto}`;
   }
