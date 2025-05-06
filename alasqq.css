@@ -1,1 +1,228 @@
-.game-box{border:0 solid #00c216;position:relative;overflow:hidden;transition:all .3s ease;box-shadow:0 4px 8px rgba(0,0,0,.1)}.game-box:hover{transform:translateY(-5px);box-shadow:0 8px 16px rgba(0,0,0,.2)}.messagebleft-container{transition:all 500ms ease;transition-property:top,right,bottom,left,opacity;font-family:'Poppins',sans-serif;font-size:14px;min-height:14px;background-color:#1a1e2d;position:fixed;display:flex;justify-content:space-between;align-items:center;color:#fff;line-height:22px;padding:12px 18px;bottom:-100px;top:-100px;opacity:0;z-index:9999;border-radius:8px;box-shadow:0 4px 20px rgba(0,0,0,.3)}div.rtp-bar{background-color:#2d3748;width:calc(100% - 10px);height:24px;margin:5px auto;overflow:hidden;border-radius:12px;box-shadow:inset 0 1px 3px rgba(0,0,0,.2)}div.rtp-bar>div{background-image:linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);background-size:1rem 1rem;height:100%;animation:1s linear infinite progress-bar-stripes;display:flex;justify-content:center;align-items:center;border-radius:12px;transition:width .6s ease}div.rtp-bar>div>div{color:#fff;font-weight:700;text-shadow:0 1px 2px rgba(0,0,0,.4);font-size:12px}button.rtp-button{display:block;background:linear-gradient(135deg,#0073a8 0%,#004e74 100%);color:#fff;border:none;border-radius:6px;width:calc(100% - 10px);margin:0 auto 10px auto;padding:8px 0;font-weight:600;text-transform:uppercase;letter-spacing:.5px;cursor:pointer;transition:all .3s ease;box-shadow:0 2px 5px rgba(0,0,0,.2)}button.rtp-button:hover{transform:translateY(-2px);box-shadow:0 4px 8px rgba(0,0,0,.3);background:linear-gradient(135deg,#0088cc 0%,#006699 100%)}#pola-modal{background-color:rgba(0,0,0,.8);backdrop-filter:blur(5px);display:flex;justify-content:center;align-items:center;position:fixed;top:0;bottom:0;left:0;right:0;z-index:9999}#pola-modal>div{background-color:#1a1e2d;color:#fff;border-radius:12px;width:90%;max-width:500px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.5)}#pola-modal>div>h3{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);margin-bottom:0;padding:16px 0;font-size:18px;font-weight:700;text-align:center;color:white;text-shadow:0 1px 3px rgba(0,0,0,.3)}#pola-modal>div>div{padding:20px}#pola-modal>div>div>img{width:100%;margin-bottom:15px;border-radius:8px;box-shadow:0 4px 8px rgba(0,0,0,.2)}#pola-modal>div>div>table{width:100%;border-collapse:collapse;margin-bottom:15px}#pola-modal>div>div>table td{border:1px solid #4a5568;padding:10px;font-size:14px}#pola-modal>div>div>table tr:not(:last-child) td{border-bottom:1px solid #718096}#pola-modal>div>div>table td:first-child{width:30%;font-weight:600;color:#e2e8f0;background-color:#2d3748}#pola-modal>div>div>button{cursor:pointer;display:block;background:linear-gradient(135deg,#667 eea 0%,#764ba2 100%);color:#fff;border:none;border-radius:6px;margin:15px auto 0 auto;padding:10px 24px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;transition:all .3s ease;box-shadow:0 4px 8px rgba(0,0,0,.2)}#pola-modal>div>div>button:hover{transform:translateY(-2px);box-shadow:0 6px 12px rgba(0,0,0,.3)}::-webkit-scrollbar{width:8px;height:8px}::-webkit-scrollbar-track{background:#1a1e2d}::-webkit-scrollbar-thumb{background:#4a5568;border-radius:4px}::-webkit-scrollbar-thumb:hover{background:#2d3748}@keyframes fadeIn{from{opacity:0}to{opacity:1}}@keyframes slideUp{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}#pola-modal>div{animation:slideUp .4s cubic-bezier(.22,1,.36,1) forwards}@media (max-width:768px){#pola-modal>div{width:95%}div.rtp-bar{height:20px}button.rtp-button{padding:8px 0;font-size:12px}}
+.game-box {
+    border: 0px solid #00c216;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.game-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.messagebleft-container {
+    transition: all 500ms ease;
+    transition-property: top, right, bottom, left, opacity;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    min-height: 14px;
+    background-color: #1a1e2d;
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    line-height: 22px;
+    padding: 12px 18px;
+    bottom: -100px;
+    top: -100px;
+    opacity: 0;
+    z-index: 9999;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* ... [previous CSS rules remain the same until the RTP bar section] */
+
+div.rtp-bar {
+    background-color: #2d3748;
+    width: calc(100% - 10px);
+    height: 24px;
+    margin: 5px auto;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+div.rtp-bar>div {
+    background-image: linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
+    background-size: 1rem 1rem;
+    height: 100%;
+    animation: 1s linear infinite progress-bar-stripes;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    transition: width 0.6s ease;
+}
+
+div.rtp-bar>div>div {
+    color: #fff;
+    font-weight: 700;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+    font-size: 12px;
+}
+
+button.rtp-button {
+    display: block;
+    background: linear-gradient(135deg, #0073a8 0%, #004e74 100%);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    width: calc(100% - 10px);
+    margin: 0 auto 10px auto;
+    padding: 8px 0;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+button.rtp-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, #0088cc 0%, #006699 100%);
+}
+
+#pola-modal {
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+}
+
+#pola-modal>div {
+    background-color: #1a1e2d;
+    color: #fff;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 500px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+#pola-modal>div>h3 {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    margin-bottom: 0;
+    padding: 16px 0;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+    color: white;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+#pola-modal>div>div {
+    padding: 20px;
+}
+
+#pola-modal>div>div>img {
+    width: 100%;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#pola-modal>div>div>table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+}
+
+#pola-modal>div>div>table td {
+    border: 1px solid #4a5568;
+    padding: 10px;
+    font-size: 14px;
+}
+
+#pola-modal>div>div>table tr:not(:last-child) td {
+    border-bottom: 1px solid #718096;
+}
+
+#pola-modal>div>div>table td:first-child {
+    width: 30%;
+    font-weight: 600;
+    color: #e2e8f0;
+    background-color: #2d3748;
+}
+
+#pola-modal>div>div>button {
+    cursor: pointer;
+    display: block;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    margin: 15px auto 0 auto;
+    padding: 10px 24px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#pola-modal>div>div>button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Modern scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1a1e2d;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #4a5568;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #2d3748;
+}
+
+/* Modern animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+#pola-modal>div {
+    animation: slideUp 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+    #pola-modal>div {
+        width: 95%;
+    }
+    
+    div.rtp-bar {
+        height: 20px;
+    }
+    
+    button.rtp-button {
+        padding: 8px 0;
+        font-size: 12px;
+    }
+}
