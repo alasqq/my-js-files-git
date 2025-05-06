@@ -33,8 +33,6 @@
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* ... [previous CSS rules remain the same until the RTP bar section] */
-
 div.rtp-bar {
     background-color: #2d3748;
     width: calc(100% - 10px);
@@ -207,8 +205,32 @@ button.rtp-button:hover {
     to { transform: translateY(0); opacity: 1; }
 }
 
+@keyframes mymove {
+    0% { background-color: #0070a4; }
+    100% { background-color: #000; }
+}
+
+@keyframes tada {
+    0%, 100% {
+        transform: scale3d(1, 1, 1);
+    }
+    10%, 20% {
+        transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
+    }
+    30%, 50%, 70%, 90% {
+        transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+    }
+    40%, 60%, 80% {
+        transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+    }
+}
+
 #pola-modal>div {
     animation: slideUp 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.tada {
+    animation: tada 1.5s infinite;
 }
 
 /* Responsive improvements */
@@ -224,5 +246,15 @@ button.rtp-button:hover {
     button.rtp-button {
         padding: 8px 0;
         font-size: 12px;
+    }
+
+    .messagebleft-pos.bottom-left {
+        right: 0 !important;
+        left: auto !important;
+        width: 100% !important;
+    }
+    
+    .navbar-grid>li {
+        width: 20% !important;
     }
 }
