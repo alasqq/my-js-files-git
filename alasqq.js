@@ -74,7 +74,7 @@ var RateGen = (function () {
   document.addEventListener("DOMContentLoaded", () => {
     const path = window.location.pathname;
     if (path.includes("/slots") && !path.includes("Fishing")) {
-      const exceptions = ["GAME TERBARU", "Promosi", "Spaceman"];
+      const exceptions = ["GAME TERBARU", "Promosi", "Spaceman", "Stream N' Spin"];
       const common = Math.floor(Date.now() / 3600000);
       const slots = document.querySelectorAll("div > div.game-box-slots");
   
@@ -197,3 +197,4 @@ var RateGen = (function () {
     modal.innerHTML += content;
     modal.style.display = "flex";
   }
+
