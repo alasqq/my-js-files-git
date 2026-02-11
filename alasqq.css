@@ -3,18 +3,45 @@
 ================================= */
 
 .game-box {
-    border: 0;
     position: relative;
     overflow: hidden;
+    border: 0;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 3px 6px rgba(0,0,0,.12);
     will-change: transform;
 }
 
 .game-box:hover {
     transform: translateY(-4px);
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 6px 12px rgba(0,0,0,.18);
 }
+
+
+/* ===============================
+   MESSAGE CONTAINER
+================================= */
+
+.messagebleft-container {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    min-height: 14px;
+    background-color: #1a1e2d;
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    line-height: 22px;
+    padding: 12px 18px;
+    bottom: -100px;
+    top: -100px;
+    opacity: 0;
+    z-index: 9999;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0,0,0,.25);
+    transition: top .5s ease, bottom .5s ease, opacity .5s ease;
+}
+
 
 /* ===============================
    RTP BAR
@@ -27,6 +54,7 @@ div.rtp-bar {
     margin: 5px auto;
     overflow: hidden;
     border-radius: 12px;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,.2);
 }
 
 div.rtp-bar > div {
@@ -35,22 +63,32 @@ div.rtp-bar > div {
     justify-content: center;
     align-items: center;
     border-radius: 12px;
+    transition: width .5s ease;
+    background-image: linear-gradient(
+        45deg,
+        rgba(255,255,255,.15) 25%,
+        transparent 25%,
+        transparent 50%,
+        rgba(255,255,255,.15) 50%,
+        rgba(255,255,255,.15) 75%,
+        transparent 75%,
+        transparent
+    );
     background-size: 1rem 1rem;
-    transition: width 0.6s ease;
-    animation: none;
 }
 
-/* Stripe animation hanya saat hover */
+/* Stripe animation active hover */
 .game-box:hover div.rtp-bar > div {
-    animation: 1s linear infinite progress-bar-stripes;
+    animation: progress-bar-stripes 1s linear infinite;
 }
 
 div.rtp-bar > div > div {
     color: #fff;
     font-weight: 700;
+    text-shadow: 0 1px 2px rgba(0,0,0,.4);
     font-size: 12px;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
 }
+
 
 /* ===============================
    RTP BUTTON
@@ -58,46 +96,40 @@ div.rtp-bar > div > div {
 
 button.rtp-button {
     display: block;
-    background: linear-gradient(135deg, #0073a8 0%, #004e74 100%);
-    color: #fff;
+    width: calc(100% - 10px);
+    margin: 0 auto 10px;
+    padding: 8px 0;
     border: none;
     border-radius: 6px;
-    width: calc(100% - 10px);
-    margin: 0 auto 10px auto;
-    padding: 8px 0;
+    background: linear-gradient(135deg,#0073a8 0%,#004e74 100%);
+    color: #fff;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: .5px;
     cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    will-change: transform;
+    transition: transform .3s ease, box-shadow .3s ease, background .3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,.2);
 }
 
 button.rtp-button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    background: linear-gradient(135deg, #0088cc 0%, #006699 100%);
+    box-shadow: 0 4px 8px rgba(0,0,0,.25);
+    background: linear-gradient(135deg,#0088cc 0%,#006699 100%);
 }
+
 
 /* ===============================
    MODAL
 ================================= */
 
 #pola-modal {
-    background-color: rgba(0, 0, 0, 0.85);
-    display: none;
+    background-color: rgba(0,0,0,.85);
+    display: flex;
     justify-content: center;
     align-items: center;
     position: fixed;
     inset: 0;
     z-index: 9999;
-}
-
-@supports (backdrop-filter: blur(5px)) {
-    #pola-modal {
-        backdrop-filter: blur(5px);
-    }
 }
 
 #pola-modal > div {
@@ -107,21 +139,18 @@ button.rtp-button:hover {
     width: 90%;
     max-width: 500px;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 8px 24px rgba(0,0,0,.45);
     animation: slideUp .35s cubic-bezier(.22,1,.36,1) forwards;
-    will-change: transform;
 }
 
-#pola-modal > div > h3 {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+#pola-modal h3 {
+    background: linear-gradient(135deg,#667eea 0%,#764ba2 100%);
     margin: 0;
     padding: 16px 0;
     font-size: 18px;
+    font-weight: 700;
     text-align: center;
-}
-
-#pola-modal > div > div {
-    padding: 20px;
+    color: #fff;
 }
 
 #pola-modal img {
@@ -136,13 +165,13 @@ button.rtp-button:hover {
     margin-bottom: 15px;
 }
 
-#pola-modal td {
+#pola-modal table td {
     border: 1px solid #4a5568;
     padding: 10px;
     font-size: 14px;
 }
 
-#pola-modal td:first-child {
+#pola-modal table td:first-child {
     width: 30%;
     font-weight: 600;
     background-color: #2d3748;
@@ -150,20 +179,22 @@ button.rtp-button:hover {
 
 #pola-modal button {
     display: block;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: #fff;
+    margin: 15px auto 0;
+    padding: 10px 24px;
     border: none;
     border-radius: 6px;
-    margin: 15px auto 0 auto;
-    padding: 10px 24px;
+    background: linear-gradient(135deg,#667eea 0%,#764ba2 100%);
+    color: #fff;
+    font-weight: 600;
     cursor: pointer;
     transition: transform .3s ease, box-shadow .3s ease;
 }
 
 #pola-modal button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0,0,0,.3);
+    box-shadow: 0 4px 8px rgba(0,0,0,.3);
 }
+
 
 /* ===============================
    ANIMATION
@@ -179,11 +210,18 @@ button.rtp-button:hover {
     to { background-position: 0 0; }
 }
 
+
 /* ===============================
-   MOBILE OPTIMIZATION
+   RESPONSIVE
 ================================= */
 
-@media (max-width: 768px) {
-    div.rtp-bar { height: 18px; }
-    button.rtp-button { font-size: 12px; }
+@media (max-width:768px){
+
+    div.rtp-bar { height:20px; }
+
+    button.rtp-button{
+        font-size:12px;
+        padding:8px 0;
+    }
+
 }
