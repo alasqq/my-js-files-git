@@ -1,66 +1,60 @@
+/* ===============================
+   GAME BOX
+================================= */
+
 .game-box {
-    border: 0px solid #00c216;
+    border: 0;
     position: relative;
     overflow: hidden;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    will-change: transform;
 }
 
 .game-box:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: translateY(-4px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
 }
 
-.messagebleft-container {
-    transition: all 500ms ease;
-    transition-property: top, right, bottom, left, opacity;
-    font-family: 'Poppins', sans-serif;
-    font-size: 14px;
-    min-height: 14px;
-    background-color: #1a1e2d;
-    position: fixed;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: #fff;
-    line-height: 22px;
-    padding: 12px 18px;
-    bottom: -100px;
-    top: -100px;
-    opacity: 0;
-    z-index: 9999;
-    border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-}
+/* ===============================
+   RTP BAR
+================================= */
 
 div.rtp-bar {
     background-color: #2d3748;
     width: calc(100% - 10px);
-    height: 24px;
+    height: 22px;
     margin: 5px auto;
     overflow: hidden;
     border-radius: 12px;
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
-div.rtp-bar>div {
-    background-image: linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
-    background-size: 1rem 1rem;
+div.rtp-bar > div {
     height: 100%;
-    animation: 1s linear infinite progress-bar-stripes;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 12px;
+    background-size: 1rem 1rem;
     transition: width 0.6s ease;
+    animation: none;
 }
 
-div.rtp-bar>div>div {
+/* Stripe animation hanya saat hover */
+.game-box:hover div.rtp-bar > div {
+    animation: 1s linear infinite progress-bar-stripes;
+}
+
+div.rtp-bar > div > div {
     color: #fff;
     font-weight: 700;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
     font-size: 12px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
 }
+
+/* ===============================
+   RTP BUTTON
+================================= */
 
 button.rtp-button {
     display: block;
@@ -73,10 +67,11 @@ button.rtp-button {
     padding: 8px 0;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: .5px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    will-change: transform;
 }
 
 button.rtp-button:hover {
@@ -85,21 +80,27 @@ button.rtp-button:hover {
     background: linear-gradient(135deg, #0088cc 0%, #006699 100%);
 }
 
+/* ===============================
+   MODAL
+================================= */
+
 #pola-modal {
-    background-color: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(5px);
-    display: flex;
+    background-color: rgba(0, 0, 0, 0.85);
+    display: none;
     justify-content: center;
     align-items: center;
     position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    inset: 0;
     z-index: 9999;
 }
 
-#pola-modal>div {
+@supports (backdrop-filter: blur(5px)) {
+    #pola-modal {
+        backdrop-filter: blur(5px);
+    }
+}
+
+#pola-modal > div {
     background-color: #1a1e2d;
     color: #fff;
     border-radius: 12px;
@@ -107,55 +108,47 @@ button.rtp-button:hover {
     max-width: 500px;
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    animation: slideUp .35s cubic-bezier(.22,1,.36,1) forwards;
+    will-change: transform;
 }
 
-#pola-modal>div>h3 {
+#pola-modal > div > h3 {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    margin-bottom: 0;
+    margin: 0;
     padding: 16px 0;
     font-size: 18px;
-    font-weight: 700;
     text-align: center;
-    color: white;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
-#pola-modal>div>div {
+#pola-modal > div > div {
     padding: 20px;
 }
 
-#pola-modal>div>div>img {
+#pola-modal img {
     width: 100%;
     margin-bottom: 15px;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-#pola-modal>div>div>table {
+#pola-modal table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 15px;
 }
 
-#pola-modal>div>div>table td {
+#pola-modal td {
     border: 1px solid #4a5568;
     padding: 10px;
     font-size: 14px;
 }
 
-#pola-modal>div>div>table tr:not(:last-child) td {
-    border-bottom: 1px solid #718096;
-}
-
-#pola-modal>div>div>table td:first-child {
+#pola-modal td:first-child {
     width: 30%;
     font-weight: 600;
-    color: #e2e8f0;
     background-color: #2d3748;
 }
 
-#pola-modal>div>div>button {
-    cursor: pointer;
+#pola-modal button {
     display: block;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: #fff;
@@ -163,98 +156,34 @@ button.rtp-button:hover {
     border-radius: 6px;
     margin: 15px auto 0 auto;
     padding: 10px 24px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: transform .3s ease, box-shadow .3s ease;
 }
 
-#pola-modal>div>div>button:hover {
+#pola-modal button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 6px 12px rgba(0,0,0,.3);
 }
 
-/* Modern scrollbar */
-::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background: #1a1e2d;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #4a5568;
-    border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #2d3748;
-}
-
-/* Modern animations */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
+/* ===============================
+   ANIMATION
+================================= */
 
 @keyframes slideUp {
     from { transform: translateY(20px); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
 }
 
-@keyframes mymove {
-    0% { background-color: #0070a4; }
-    100% { background-color: #000; }
+@keyframes progress-bar-stripes {
+    from { background-position: 1rem 0; }
+    to { background-position: 0 0; }
 }
 
-@keyframes tada {
-    0%, 100% {
-        transform: scale3d(1, 1, 1);
-    }
-    10%, 20% {
-        transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
-    }
-    30%, 50%, 70%, 90% {
-        transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
-    }
-    40%, 60%, 80% {
-        transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
-    }
-}
+/* ===============================
+   MOBILE OPTIMIZATION
+================================= */
 
-#pola-modal>div {
-    animation: slideUp 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-
-.tada {
-    animation: tada 1.5s infinite;
-}
-
-/* Responsive improvements */
 @media (max-width: 768px) {
-    #pola-modal>div {
-        width: 95%;
-    }
-    
-    div.rtp-bar {
-        height: 20px;
-    }
-    
-    button.rtp-button {
-        padding: 8px 0;
-        font-size: 12px;
-    }
-
-    .messagebleft-pos.bottom-left {
-        right: 0 !important;
-        left: auto !important;
-        width: 100% !important;
-    }
-    
-    .navbar-grid>li {
-        width: 20% !important;
-    }
+    div.rtp-bar { height: 18px; }
+    button.rtp-button { font-size: 12px; }
 }
